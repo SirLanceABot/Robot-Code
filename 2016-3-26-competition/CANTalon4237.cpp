@@ -5,7 +5,7 @@ CANTalon4237::CANTalon4237(int port, SensorType type, int softFwdLimit, int soft
 //mCANTalon(std::make_shared<CANTalon>())
 {
 	printf("File %18s Date %s Time %s Object %p\n",__FILE__,__DATE__, __TIME__, this);
-	mCANTalon = new CANTalon(port);         //swithched to shared pointer
+	mCANTalon = new CANTalon(port);
 	mSensorType = type;
 
 	//The PG27 Planetary Gearbox with RSbb775 Motor and Encoder is reversed
