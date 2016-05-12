@@ -1,0 +1,23 @@
+********************************************************
+Autonomous Modes
+********************************************************
+TYPE THE CASE NUM IN THE DASHBOARD SLIDER 0 AND HIT TAB.
+
+Case 0:
+-Drive to auto zone, no other features
+-Be placed in directly in front of the auto zone, ready to drive forward (3ft of movement)
+
+Case 1:
+-Be placed directly in front of a yellow tote, elevator meshed with the tote already
+-Lower elevator and pick up yellow tote, depends on string pot (if not down at the beginning)
+-Drive 7.5 feet backwards to the auto zone
+
+Case 2:
+-Be placed directly in front of a green container, elevator meshed with the container already
+-Drive 7.5 feet forward to auto zone
+
+Case 3: DOES NOT WORK YET
+-Start 4 feet from container, pick it up with arm
+-Spin 180 degrees, depends on Gyro
+-Jog to the left and approach the yellow tote
+-Pick up the yellow tote and drive 7.5 feet backwards to the auto zone

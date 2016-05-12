@@ -1,0 +1,93 @@
+-SIR LANCE-A-BOT I/O CONNECTIONS
+-------------------------------
+
+*******************************
+cRIO Port1 NI9201 Analog Inputs
+*******************************
+
+  1. Scoop Encoder
+  2. Gyro
+  3. Battery Voltage
+  4.
+  5.
+  6.
+  7.
+  8.
+
+***********************************
+cRIO Port2 NI9403 Digital Sidecar 1
+***********************************
+
+DIGITAL INPUTS
+--------------
+  1.  Right Drive A Shaft Encoder A
+  2.  Right Drive A Shaft Encoder B
+  3.  Left Drive B Shaft Encoder A
+  4.  Left Drive B Shaft Encoder B
+  5.  Front Steering A Shaft Encoder A
+  6.  Front Steering A Shaft Encoder B
+  7.  Front Steering A Shaft Encoder Index
+  8.  Back Steering B Shaft Encoder A
+  9.  Back Steering B Shaft Encoder B
+ 10.  Back Steering B Shaft Encoder Index 
+ 11.  Shooter Shaft Encoder A
+ 12.  Shooter Shaft Encoder B
+ 13.  Pressure Switch
+ 14.  Shooter Limit Hall Effect Sensor
+
+PWM OUTPUTS
+-----------
+  1.  Right Drive (MC 1,2)
+  2.  Left Drive (MC 3,4)
+  3.  Front Steering (MC 5)
+  4.  Back Steering (MC 6)
+  5.  CIM Shooter (MC 7,8)
+  6.  Mini CIM Shooter (MC 9, 10)
+  7.  Scooper PG3 (MC 11)
+  8.
+  9.
+ 10.
+ 
+ RELAY OUTPUTS
+------------
+  1.  Compressor
+  2.  LED Ring
+  3.
+  4.
+  5.
+  6.
+  7.
+  8.
+
+***********************************
+cRIO Port3 NI9472 Relay Controller
+***********************************
+
+  1.  Piston Out
+  2.  Piston In 
+  3.
+  4.
+  5.
+  6.
+  7.
+  8.
+
+***********************************
+Motor Controllers
+***********************************
+
+ MC#  Module#  Port#  Motor Name     Type
+-------------------------------------------
+  1    1        1     CIM1  DRVA-1   Talon
+  2    1        1     CIM2  DRVA-2   Talon
+  3    1        2     CIM3  DRVB-1   Talon
+  4    1        2     CIM4  DRVB-2   Talon
+  5    1        3     PG1   STRA     Talon
+  6    1        4     PG2   STRB     Talon
+  7    1        5     CIM5  ARMA-1   Talon
+  8    1        5     CIM6  ARMA-2   Talon
+  9    1        6     MCIM1 ARMB-1   Talon
+ 10    1        6     MCIM2 ARMB-2   Talon
+ 11    1        7     PG3   SCP      Talon
+  ?    2        1     -     Cmprsr   Relay
+  ?    2        2     -     LED      Relay

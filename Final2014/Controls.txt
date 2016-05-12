@@ -1,0 +1,27 @@
+ Robot Controls
+
+ **************************************
+ XBox Controller
+ **************************************
+ Y Button: Shoot
+ X Button: Reset Shooter Encoder
+ A Button: Raise Scooper
+ B Button: Lower Scooper
+ Start Button: Raise Lifter
+ Back Button: Lower Lifter
+ Right Bumper: Tight Turn
+ Right Stick Press: 
+
+ **************************************
+ Logitech Controller
+ **************************************
+ X and Y Axis: Drive
+ X and Y Axis: Steer
+ Hold Button 1: Shoot
+ Hold Button 2: Activate Turning
+ Hold Button 3: Tight Turn
+ Hold Button 4: Lift Down
+ Hold Button 6: Lift Up
+ Thumb Slider Up: Scoop Up
+ Thimb Slider Down: Scoop Down
+ 
