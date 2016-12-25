@@ -23,8 +23,9 @@ public:
 	void Autonomous(void);
 	void OperatorControl(void);
 	void Test(void);
-	void ReverseTest(void);
 	void TestRKT1(void);
+	void TestRKT2(void);
+	void TestRKT3(void);
 	void TankDriveOld(void);
 	void DriveTest(void);
 	void SetWheelPosition(void);
@@ -85,13 +86,88 @@ void CrabDriveMain::OperatorControl(void)
 	while(IsOperatorControl())
 	{
 		mXBoxJoystick->Print(this);
-		//DriveTest();
+		DriveTest();
 		Wait(.1021);
 	}
-
 }
 
-void CrabDriveMain::ReverseTest(void)
+void CrabDriveMain::Test(void)
+{
+	printf("Sensors JLX: JLY: ELDist: ERDist: ELRate: ELRaw: ERRaw: ERRate: LSpeed: RSpeed: EF: EB: CF: CB: GA:\n");
+
+	while(IsTest())
+	{
+		printf("\n%f ", timer->Get());
+		mXBoxJoystick->Print(this);
+		mDriveTrain->Print();
+		mCrabDriveSteer->Print();
+		mCrabDriveSteer->SetFrontWheels(0); // front steer motor
+		mCrabDriveSteer->SetBackWheels(0); // back steer motor
+		mDriveTrain->Drive(.0, 0.5);  // drive motors (left, right)
+		Wait(.02);
+	}
+}
+
+void CrabDriveMain::TestRKT1(void)
+{
+	double RobotHeading;
+
+	while(IsTest())
+	{
+		printf("%f, ", timer->Get());
+
+		RobotHeading = mCrabDriveSteer->GetRobotHeading();
+
+		if (RobotHeading > 350.) RobotHeading -= 360.;
+
+		mCrabDriveSteer->GyroGetValue();
+		printf("%f, %ld, %ld\n", RobotHeading, mCrabDriveSteer->GetGyroTemperature(), mCrabDriveSteer->GetAnalogVoltage());
+
+		Wait(.25);
+	}
+
+//
+//		printf("%f, %ld, %ld", RobotHeading, mCrabDriveSteer->GetGyroTemperature(), mCrabDriveSteer->GetAnalogVoltage());
+//	double RobotHeading;
+//
+//	while(IsTest())
+//	{
+//		printf("%f, ", timer->Get());
+//		RobotHeading = mCrabDriveSteer->GetRobotHeading();
+//		if (RobotHeading > 350.) RobotHeading -= 360.;
+//		printf("%f, %ld, %ld", RobotHeading, mCrabDriveSteer->GetGyroTemperature(), mCrabDriveSteer->GetAnalogVoltage());
+//		if (RobotHeading > 9.)
+//		{
+//			mCrabDriveSteer->CalibrateWheels(7);
+//			printf(" , "" reset gyro""");
+//		}
+//		printf("\n");
+//		Wait(.25);
+////		printf("%f Set Wheel Position with buttons Front A=+Right, B=-Left, Back X=+Right, Y=-Left, Reset Gyro=BACK, Reset Encoder=START\n", timer->Get());
+////		SetWheelPosition();
+////		printf("Robot Heading = %f ", mCrabDriveSteer->GetRobotHeading());
+////		Wait(.01);
+//	}
+}
+
+void CrabDriveMain::TestRKT2(void)
+{
+	printf("Sensors JLX: JLY: ELDist: ERDist: ELRate: ELRaw: ERRaw: ERRate: LSpeed: RSpeed: EF: EB: CF: CB: GA:\n");
+
+	while(IsTest())
+	{
+		printf("\n%f ", timer->Get());
+		mXBoxJoystick->Print(this);
+		mDriveTrain->Print();
+		mCrabDriveSteer->Print();
+		mCrabDriveSteer->SetFrontWheels(0); // front steer motor
+		mCrabDriveSteer->SetBackWheels(0); // back steer motor
+		mDriveTrain->Drive(.0, 0.5);  // drive motors (left, right)
+		Wait(.02);
+	}
+}
+
+void CrabDriveMain::TestRKT3(void)
 {   // RK Thomas 10/2015
 	// test how fast motor can change directions before D-Link crashes
 	// cRIO with Talon SR and controller braking on
@@ -133,66 +209,6 @@ void CrabDriveMain::ReverseTest(void)
 	}
 }
 
-void CrabDriveMain::TestRKT1(void)
-{
-	printf("Sensors JLX: JLY: ELDist: ERDist: ELRate: ELRaw: ERRaw: ERRate: LSpeed: RSpeed: EF: EB: CF: CB: GA:\n");
-
-	while(IsTest())
-	{
-		printf("\n%f ", timer->Get());
-		mXBoxJoystick->Print(this);
-		mDriveTrain->Print();
-		mCrabDriveSteer->Print();
-		mCrabDriveSteer->SetFrontWheels(0); // front steer motor
-		mCrabDriveSteer->SetBackWheels(0); // back steer motor
-		mDriveTrain->Drive(.0, 0.5);  // drive motors (left, right)
-		Wait(.02);
-	}
-}
-
-void CrabDriveMain::Test(void)
-{
-	double RobotHeading;
-
-	while(IsTest())
-	{
-		printf("%f, ", timer->Get());
-
-		RobotHeading = mCrabDriveSteer->GetRobotHeading();
-
-		if (RobotHeading > 350.) RobotHeading -= 360.;
-
-		mCrabDriveSteer->GyroGetValue();
-		printf("%f, %ld, %ld\n", RobotHeading, mCrabDriveSteer->GetGyroTemperature(), mCrabDriveSteer->GetAnalogVoltage());
-
-		Wait(.25);
-	}
-
-
-//
-//		printf("%f, %ld, %ld", RobotHeading, mCrabDriveSteer->GetGyroTemperature(), mCrabDriveSteer->GetAnalogVoltage());
-//	double RobotHeading;
-//
-//	while(IsTest())
-//	{
-//		printf("%f, ", timer->Get());
-//		RobotHeading = mCrabDriveSteer->GetRobotHeading();
-//		if (RobotHeading > 350.) RobotHeading -= 360.;
-//		printf("%f, %ld, %ld", RobotHeading, mCrabDriveSteer->GetGyroTemperature(), mCrabDriveSteer->GetAnalogVoltage());
-//		if (RobotHeading > 9.)
-//		{
-//			mCrabDriveSteer->CalibrateWheels(7);
-//			printf(" , "" reset gyro""");
-//		}
-//		printf("\n");
-//		Wait(.25);
-////		printf("%f Set Wheel Position with buttons Front A=+Right, B=-Left, Back X=+Right, Y=-Left, Reset Gyro=BACK, Reset Encoder=START\n", timer->Get());
-////		SetWheelPosition();
-////		printf("Robot Heading = %f ", mCrabDriveSteer->GetRobotHeading());
-////		Wait(.01);
-//	}
-}
-
 void CrabDriveMain::DriveTest() //  RKT good function
 {
 	double x, y, xRight, driveAngle = 0.000, driveSpeed; //, spinAngle;
@@ -210,7 +226,7 @@ void CrabDriveMain::DriveTest() //  RKT good function
 
 	if((fabs(x) > .2 || fabs(y) > .2) && !leftBumper && !rightBumper) // left stick moved and no bumpers - crab drive
 	{
-		printf("\n%f ", timer->Get());
+		printf("\n%f left stick x or y moved and no bumpers - crab drive.", timer->Get());
 		driveAngle = mXBoxJoystick->GetLeftJoystickAngle();
 		driveSpeed = mXBoxJoystick->GetLeftJoystickHypotenuse();
 		printf("Angle: %f Speed: %f Gryo: %f\n", driveAngle, driveSpeed, mCrabDriveSteer->GetRobotHeading());
@@ -223,10 +239,12 @@ void CrabDriveMain::DriveTest() //  RKT good function
 	}
 	else if(fabs(xRight) > .2 && !leftBumper && rightBumper) // right stick x moved and right bumper and no left bumper - spin
 	{
+		printf("\n%f right stick x moved and right bumper and no left bumper - spin.", timer->Get());
 		SpinRobot(xRight);
 	}
 	else if((fabs(x) > .2 || fabs(y) > .2) && leftBumper && !rightBumper) // left stick moved and left bumper and no right bumper- tank drive
 	{
+		printf("\n%f left stick x or y moved and left bumper and no right bumper - tank drive.", timer->Get());
 		TankDrive();
 	}
 	else // any other combo - stop
@@ -261,7 +279,7 @@ void CrabDriveMain::DriveTrainTest(void)
 
 void CrabDriveMain::TankDriveOld(void)
 {
-	//  needs work.  The angles are no longer computed correctly.  I don't like the assumptions and limitations.
+	//  needs work.  The angles are no longer computed correctly.  I don't like the assumptions and limitations. RKT
 
 	double leftY, rightY, robotHeading, frontHeading, backHeading;
 	leftY = mXBoxJoystick->GetAxis(XBoxJoystick::kLeftYAxis);
