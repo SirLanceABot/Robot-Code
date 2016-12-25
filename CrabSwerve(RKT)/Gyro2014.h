@@ -131,7 +131,7 @@ void Gyro2014::InitGyro()
 
 	m_analog->SetAccumulatorCenter(m_center);
 	int32_t deadband = 550; // rkt
-	m_analog->SetAccumulatorDeadband(deadband); ///< TODO: compute / parameterize this, rkt SET, was 0, fallacy in GetAngle uses count*offset even for samples that are within the deadband
+	m_analog->SetAccumulatorDeadband(deadband); // TODO: compute / parameterize this, rkt SET, was 0, fallacy in GetAngle uses count*offset even for samples that are within the deadband
 	m_analog->ResetAccumulator();
 
 	printf("\nInitGyro value %lld, count %lu, center %lu, deadband %ld, offset %f\n", value, count, m_center, deadband, m_offset);  // rkt
