@@ -67,8 +67,7 @@ class GripPipeline:
         (self.find_contours_output) = self.__find_contours(self.__find_contours_input, self.__find_contours_external_only)
 
         # Step Filter_Contours0:
-        self.__filter_contours_contours = self.find_contours_output
-        
+        self.__filter_contours_contours = self.find_contours_output  
         (self.filter_contours_output) = self.__filter_contours(self.__filter_contours_contours, self.__filter_contours_min_area, self.__filter_contours_min_perimeter, self.__filter_contours_min_width, self.__filter_contours_max_width, self.__filter_contours_min_height, self.__filter_contours_max_height, self.__filter_contours_solidity, self.__filter_contours_max_vertices, self.__filter_contours_min_vertices, self.__filter_contours_min_ratio, self.__filter_contours_max_ratio)
 
 
@@ -97,7 +96,7 @@ class GripPipeline:
             A black and white numpy.ndarray.
         """
         out = cv2.cvtColor(input, cv2.COLOR_BGR2HLS)
-        print out
+        #print out
         return cv2.inRange(out, (hue[0], lum[0], sat[0]),  (hue[1], lum[1], sat[1]))
         
     @staticmethod
@@ -174,3 +173,4 @@ class GripPipeline:
             #print output
 
         return output
+
